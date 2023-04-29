@@ -79,14 +79,14 @@
           to="/dailyUpdates"
           class="flex items-center w-full"
           :class="[
-            route.path === '/dailyUpdates'
+            route.name === 'dailyUpdates' || route.name === 'DailyUpdates-id'
               ? 'bg-stone-800 text-slate-100 rounded-lg'
               : '',
             minimized ? '' : 'pr-4',
           ]"
           ><img
             :src="
-              route.path === '/dailyUpdates'
+              route.name === 'dailyUpdates' || route.name === 'DailyUpdates-id'
                 ? '/icons/dailyUpdates-selected.svg'
                 : '/icons/dailyUpdates.svg'
             "

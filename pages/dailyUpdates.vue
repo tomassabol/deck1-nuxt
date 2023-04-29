@@ -9,6 +9,7 @@
         v-for="dailyUpdate in dailyUpdates"
         :key="dailyUpdate.id"
         class="flex-auto bg-gray-50 text-center border-t border-slate-150 h-12 cursor-pointer"
+        @click.prevent="router.push(`/dailyUpdates/${dailyUpdate.id}`)"
       >
         <TableData>{{ dailyUpdate.id }}</TableData>
         <TableData>{{ dailyUpdate.flight.flightNumber }}</TableData>
@@ -44,6 +45,8 @@ import TableData from "@/components/Tables/TableData.vue";
 import { Ref, onBeforeMount, ref } from "vue";
 import DateFormat from "@/components/Helpers/DateFormat.vue";
 import query from "~/api/dailyUpdates.graphql";
+
+const router = useRouter();
 
 const dailyUpdates: Ref<Types.DailyUpdate[]> = ref([]);
 

@@ -7,11 +7,11 @@
     :type="props.type"
     class="inline-flex items-center rounded-lg border-gray-100 px-4 py-2 text-base font-medium shadow-md focus:outline-none focus:ring-2 bg-white border-2 hover:bg-gray-50 text-gray-800 focus:ring-indigo-500 focus:ring-offset-2 h-fit w-fit"
   >
-    <div v-if="props.loading === false" class="rotate-180">
-      <i aria-hidden="true" class="fas fa-long-arrow-right ml-2"></i>
+    <div v-if="props.loading === false">
+      <Icon name="ion:arrow-left-c" />
     </div>
     <div v-if="props.success === true">
-      <i role="status" aria-hidden="true" class="fa-solid fa-check mr-2"></i>
+      <Icon name="icon-park-outline:check-small" />
     </div>
     <div v-else-if="props.loading === true" class="mr-2">
       <svg
