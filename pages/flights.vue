@@ -29,6 +29,7 @@
         v-for="flight in flights"
         :key="flight.id"
         class="flex-auto bg-gray-50 hover:cursor-pointer text-center border-t border-slate-150 h-12"
+        @click.prevent="() => $router.push(`/flights/${flight.id}`)"
       >
         <TableData>{{ flight.flightNumber }}</TableData>
         <TableData>{{ flight.from.name }} </TableData>

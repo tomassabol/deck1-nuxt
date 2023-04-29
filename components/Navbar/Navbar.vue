@@ -25,12 +25,14 @@
           to="/"
           class="flex items-center w-full"
           :class="[
-            route.path === '/' ? 'bg-stone-800 text-slate-100 rounded-lg' : '',
+            route.name === 'index'
+              ? 'bg-stone-800 text-slate-100 rounded-lg'
+              : '',
             minimized ? '' : 'pr-4',
           ]"
           ><img
             :src="
-              route.path === '/'
+              route.name === 'index'
                 ? '/icons/dashboard-selected.svg'
                 : '/icons/dashboard.svg'
             "
@@ -41,16 +43,16 @@
           to="/flights"
           class="flex items-center w-full"
           :class="[
-            route.path === '/flights'
+            route.name === 'flights' || route.name === 'Flights-id'
               ? 'bg-stone-800 text-slate-100 rounded-lg'
               : '',
             minimized ? '' : 'pr-4',
           ]"
           ><img
             :src="
-              route.path === '/flights'
-                ? '/icons/flights-selected.svg'
-                : '/icons/flights.svg'
+              route.name === 'flights' || route.name === 'Flights-id'
+                ? '/icons/Flights-selected.svg'
+                : '/icons/Flights.svg'
             "
             class="w-10 p-2"
           /><span v-if="!minimized">Flights</span></NuxtLink
