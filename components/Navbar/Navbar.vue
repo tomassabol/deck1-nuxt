@@ -61,14 +61,14 @@
           to="/dailyReports"
           class="flex items-center w-full"
           :class="[
-            route.path === '/dailyReports'
+            route.name === 'dailyReports' || route.name === 'DailyReports-id'
               ? 'bg-stone-800 text-slate-100 rounded-lg'
               : '',
             minimized ? '' : 'pr-4',
           ]"
           ><img
             :src="
-              route.path === '/dailyReports'
+              route.name === 'dailyReports' || route.name === 'DailyReports-id'
                 ? '/icons/dailyReports-selected.svg'
                 : '/icons/dailyReports.svg'
             "

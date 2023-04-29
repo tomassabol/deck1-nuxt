@@ -14,7 +14,7 @@
     class="inline-flex items-center rounded-lg border border-transparent bg-[#5150F4] px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 h-fit w-fit"
   >
     <div v-if="props.success === true">
-      <i role="status" aria-hidden="true" class="fa-solid fa-check mr-2"></i>
+      <Icon name="icon-park-outline:check-small" />
     </div>
     <div v-else-if="props.loading === true" class="mr-2">
       <svg
@@ -42,7 +42,7 @@
     <span v-else>{{ props.loadingText }}</span>
     <slot></slot>
     <div v-if="props.loading === false">
-      <i aria-hidden="true" class="fas fa-long-arrow-right ml-2"></i>
+      <Icon name="ion:arrow-right-c" />
     </div>
   </button>
 </template>

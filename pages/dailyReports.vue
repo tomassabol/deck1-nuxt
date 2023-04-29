@@ -9,6 +9,7 @@
       <TableRow
         v-for="dailyReport in dailyReports"
         class="flex-auto bg-gray-50 hover:cursor-pointer text-center border-t border-slate-150 h-12"
+        @click.prevent="router.push(`/dailyReports/${dailyReport.id}`)"
       >
         <TableData>{{ dailyReport.id }}</TableData>
         <TableData>
@@ -45,6 +46,8 @@ import TableData from "@/components/Tables/TableData.vue";
 import query from "~/api/dailyReports.graphql";
 
 const dailyReports: Ref<Types.DailyReport[]> = ref([]);
+
+const router = useRouter();
 
 onBeforeMount(() => {
   getData();
