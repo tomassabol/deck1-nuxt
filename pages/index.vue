@@ -3,12 +3,13 @@
     <PageTitle :primaryText="`Welcome, ${name}!`" :secondaryText="position" />
     <div class="mt-72">
       <h1 class="font-bold text-2xl mb-8">Today</h1>
-      <div class="flex items-center justify-center">
-        <div
-          class="flex flex-row flex-wrap gap-x-6 gap-y-8 justify-evenly w-11/12"
-        >
-          <CardReusable v-for="i in 4" :key="i" />
-        </div>
+      <div
+        class="flex flex-wrap md:justify-center gap-8 lg:grid lg:grid-cols-2 lg:gap-12 xl:grid xl:grid-cols-2 xl:gap-12 2xl:grid 2xl:grid-cols-2 2xl:gap-12"
+      >
+        <CardReusable />
+        <CardReusable />
+        <CardReusable />
+        <CardReusable />
       </div>
     </div>
   </div>

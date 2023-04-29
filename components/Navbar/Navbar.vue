@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex w-max px-4 bg-purple-50 h-screen flex-col justify-between items-center sticky top-0"
+    class="flex w-max px-4 bg-rose-50 h-screen flex-col justify-between items-center sticky top-0"
   >
     <NuxtLink to="/" class="mt-10">
       <img
@@ -14,57 +14,101 @@
         to="/"
         class="flex items-center w-full pr-4"
         :class="
-          route.path === '/' ? 'bg-gray-800 text-white rounded-lg pr-1' : ''
+          route.path === '/'
+            ? 'bg-stone-800 text-slate-100 rounded-lg pr-1'
+            : ''
         "
-        ><img src="/icons/dashboard.svg" class="w-10 p-2" />Dashboard</NuxtLink
+        ><img
+          :src="
+            route.path === '/'
+              ? '/icons/dashboard-selected.svg'
+              : '/icons/dashboard.svg'
+          "
+          class="w-10 p-2"
+        />Dashboard</NuxtLink
       >
       <NuxtLink
         to="/flights"
         class="flex items-center w-full pr-4"
         :class="
           route.path === '/flights'
-            ? 'bg-gray-800 text-white rounded-lg pr-1'
+            ? 'bg-stone-800 text-slate-100 rounded-lg pr-1'
             : ''
         "
-        ><img src="/icons/dailyReports.svg" class="w-10 p-2" />Flights</NuxtLink
+        ><img
+          :src="
+            route.path === '/flights'
+              ? '/icons/dailyReports-selected.svg'
+              : '/icons/dailyReports.svg'
+          "
+          class="w-10 p-2"
+        />Flights</NuxtLink
       >
       <NuxtLink
         to="/dailyReports"
         class="flex items-center w-full pr-4"
         :class="
           route.path === '/dailyReports'
-            ? 'bg-gray-800 text-white rounded-lg'
+            ? 'bg-stone-800 text-slate-100 rounded-lg'
             : ''
         "
-        ><img src="/icons/dailyReports.svg" class="w-10 p-2" />Daily
-        Reports</NuxtLink
+        ><img
+          :src="
+            route.path === '/dailyReports'
+              ? '/icons/dailyReports-selected.svg'
+              : '/icons/dailyReports.svg'
+          "
+          class="w-10 p-2"
+        />Daily Reports</NuxtLink
       >
       <NuxtLink
         to="/dailyUpdates"
         class="flex items-center w-full pr-4"
         :class="
           route.path === '/dailyUpdates'
-            ? 'bg-gray-800 text-white rounded-lg'
+            ? 'bg-stone-800 text-slate-100 rounded-lg'
             : ''
         "
-        ><img src="/icons/dailyUpdates.svg" class="w-10 p-2" />Daily
-        Updates</NuxtLink
+        ><img
+          :src="
+            route.path === '/dailyUpdates'
+              ? '/icons/dailyUpdates-selected.svg'
+              : '/icons/dailyUpdates.svg'
+          "
+          class="w-10 p-2"
+        />Daily Updates</NuxtLink
       >
       <NuxtLink
         to="/locations"
         class="flex items-center w-full pr-4"
         :class="
-          route.path === '/locations' ? 'bg-gray-800 text-white rounded-lg' : ''
+          route.path === '/locations'
+            ? 'bg-stone-800 text-slate-100 rounded-lg'
+            : ''
         "
-        ><img src="/icons/sites.svg" class="w-10 p-2" />Locations</NuxtLink
+        ><img
+          :src="
+            route.path === '/locations'
+              ? '/icons/sites-selected.svg'
+              : '/icons/sites.svg'
+          "
+          class="w-10 p-2"
+        />Locations</NuxtLink
       >
       <NuxtLink
         to="/user"
         class="flex items-center w-full pr-4"
         :class="
-          route.path === '/user' ? 'bg-gray-800 text-white rounded-lg' : ''
+          route.path === '/user' ? 'bg-stone-800 text-slate-100 rounded-lg' : ''
         "
-        ><img src="/icons/profile.svg" class="w-10 p-2" />Account</NuxtLink
+        ><img
+          :src="
+            route.path === '/user'
+              ? '/icons/profile-selected.svg'
+              : '/icons/profile.svg'
+          "
+          class="w-10 p-2"
+        />Account</NuxtLink
       >
     </div>
     <NuxtLink to="/">

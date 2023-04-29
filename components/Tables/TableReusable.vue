@@ -1,10 +1,10 @@
 <template>
   <div
-    class="flex border border-gray-100 rounded-xl shadow-md w-full overflow-hidden"
+    class="flex border border-gray-200 rounded-xl shadow-md w-full overflow-hidden"
   >
     <table class="w-full">
       <tr>
-        <th v-for="header in tableHeaders" class="p-3">
+        <th v-for="header in tableHeaders" class="p-3 bg-slate-100">
           {{ header }}
         </th>
       </tr>

@@ -1,5 +1,7 @@
 <template>
-  <div class="px-7 py-6 rounded-xl border border-gray-100 shadow-md flex">
+  <div
+    class="px-7 py-6 rounded-xl border border-gray-200 shadow-md bg-white flex"
+  >
     <img
       :src="`/icons/Helicopter.svg`"
       class="initial loading w-20 h-20 bg-purple-50 p-4 rounded-full"

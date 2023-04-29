@@ -3,7 +3,7 @@
     <input
       :value="modelValue"
       :type="type ? type : 'text'"
-      class="border-2 border-gray-100 w-64 h-10 rounded-md text-lg text-center"
+      class="border-2 border-gray-200 w-64 h-10 rounded-md text-lg text-center"
       :disabled="isDisabled"
       :placeholder="placeholder"
       v-on:input="

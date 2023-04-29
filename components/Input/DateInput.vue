@@ -10,7 +10,7 @@
       required
       :disabled="isDisabled"
       :value="graphqlDateFormat(value)"
-      class="border-2 border-gray-100 w-64 h-10 rounded-md text-lg text-center"
+      class="border-2 border-gray-200 w-64 h-10 rounded-md text-lg text-center"
     />
   </div>
 </template>
