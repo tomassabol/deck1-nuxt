@@ -97,14 +97,18 @@
           to="/locations"
           class="flex items-center w-full"
           :class="[
-            route.path === '/locations'
+            route.name === 'locations' ||
+            route.name === 'Locations-id' ||
+            route.name === 'Locations-Sites-id'
               ? 'bg-stone-800 text-slate-100 rounded-lg'
               : '',
             minimized ? '' : 'pr-4',
           ]"
           ><img
             :src="
-              route.path === '/locations'
+              route.name === 'locations' ||
+              route.name === 'Locations-id' ||
+              route.name === 'Locations-Sites-id'
                 ? '/icons/Sites-selected.svg'
                 : '/icons/Sites.svg'
             "

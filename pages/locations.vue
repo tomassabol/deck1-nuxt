@@ -38,6 +38,7 @@
           v-for="location in tableData"
           :key="location.id"
           class="flex-auto bg-gray-50 hover:cursor-pointer text-center border-t border-slate-150 h-12"
+          @click="navigate(location.id, location.type)"
         >
           <TableData>{{ location.id }}</TableData>
           <TableData>{{ location.name }}</TableData>
@@ -68,20 +69,15 @@ import ButtonReusable from "@/components/Buttons/ButtonReusable.vue";
 import Table from "@/components/Tables/TableReusable.vue";
 import TableRow from "@/components/Tables/TableRow.vue";
 import TableData from "@/components/Tables/TableData.vue";
-import { Ref, onBeforeMount, ref, watch } from "vue";
 import TabButton from "@/components/Buttons/TabButton.vue";
 import query from "~/api/locations.graphql";
+
+const router = useRouter();
 
 const tableData: Ref<any> = ref([]);
 const sites: Ref<Types.Site[]> = ref([]);
 const heliports: Ref<Types.Location[]> = ref([]);
 const via: Ref<Types.Location[]> = ref([]);
-
-const isLoading = ref(false);
-const isCreate = ref(false);
-const isSuccess = ref(false);
-const error = ref(false);
-const errors = ref(false);
 
 const activeTab: Ref<"sites" | "heliports" | "other"> = ref("sites");
 const tableHeaders: Ref<Types.TableHeader> = ref({});
@@ -132,4 +128,12 @@ watch(activeTab, (newVal) => {
     };
   }
 });
+
+const navigate = (id: number, type: string) => {
+  if (type) {
+    router.push("locations/" + id);
+  } else {
+    router.push("locations/sites/" + id);
+  }
+};
 </script>

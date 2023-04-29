@@ -40,28 +40,28 @@
           <Label>Maintenance</Label>
           <ToggleSwitch v-model="dailyUpdate.maintenance" :disabled="true" />
         </div>
-        <div class="flex gap-4 items-center">
+        <div class="flex gap-4 items-center" v-if="dailyUpdate.maintenance">
           <Label>Unplanned Maintenance</Label>
           <ToggleSwitch
             v-model="dailyUpdate.unplannedMaintenance"
             :disabled="true"
           />
         </div>
-        <div class="flex gap-4 items-center">
+        <div class="flex gap-4 items-center" v-if="dailyUpdate.maintenance">
           <Label>Planned Maintenance</Label>
           <ToggleSwitch
             v-model="dailyUpdate.plannedMaintenance"
             :disabled="true"
           />
         </div>
-        <div class="flex gap-4 items-center">
+        <div class="flex gap-4 items-center" v-if="dailyUpdate.maintenance">
           <Label>Other Maintenance</Label>
           <ToggleSwitch
             v-model="dailyUpdate.otherMaintenance"
             :disabled="true"
           />
         </div>
-        <div class="flex flex-col gap-1">
+        <div class="flex flex-col gap-1" v-if="dailyUpdate.maintenance">
           <Label>Maintenance note</Label>
           <TextArea v-model="dailyUpdate.maintenanceNote" :isDisabled="true" />
         </div>

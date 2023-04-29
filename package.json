@@ -21,6 +21,8 @@
   "dependencies": {
     "graphql-tag": "^2.12.6",
     "nuxt-graphql-client": "^0.2.27",
-    "nuxt-icon": "^0.4.0"
+    "nuxt-icon": "^0.4.0",
+    "nuxt-vue-multiselect": "^1.0.4",
+    "vue-multiselect": "^2.1.7"
   }
 }
