@@ -7,13 +7,16 @@
     :type="props.type"
     class="inline-flex items-center rounded-lg border-gray-100 px-4 py-2 text-base font-medium shadow-md focus:outline-none focus:ring-2 bg-white border-2 hover:bg-gray-50 text-gray-800 focus:ring-indigo-500 focus:ring-offset-2 h-fit w-fit"
   >
-    <div v-if="props.loading === false">
+    <div v-if="props.loading === false && props.displayIcon === true">
       <Icon name="ion:arrow-left-c" />
     </div>
-    <div v-if="props.success === true">
+    <div v-if="props.success === true && props.displayIcon === true">
       <Icon name="icon-park-outline:check-small" />
     </div>
-    <div v-else-if="props.loading === true" class="mr-2">
+    <div
+      v-else-if="props.loading === true && props.displayIcon === true"
+      class="mr-2"
+    >
       <svg
         class="animate-spin h-5 w-5 text-white"
         xmlns="http://www.w3.org/2000/svg"
@@ -50,6 +53,7 @@ interface Props {
   loading?: boolean;
   success?: boolean;
   text?: string;
+  displayIcon?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -59,5 +63,6 @@ const props = withDefaults(defineProps<Props>(), {
   loading: false,
   success: false,
   text: "Back",
+  displayIcon: true,
 });
 </script>

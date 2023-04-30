@@ -43,14 +43,18 @@
           to="/flights"
           class="flex items-center w-full"
           :class="[
-            route.name === 'flights' || route.name === 'Flights-id'
+            route.name === 'Flights' ||
+            route.name === 'Flights-id' ||
+            route.name === 'Flights-new'
               ? 'bg-stone-800 text-slate-100 rounded-lg'
               : '',
             minimized ? '' : 'pr-4',
           ]"
           ><img
             :src="
-              route.name === 'flights' || route.name === 'Flights-id'
+              route.name === 'Flights' ||
+              route.name === 'Flights-id' ||
+              route.name === 'Flights-new'
                 ? '/icons/Flights-selected.svg'
                 : '/icons/Flights.svg'
             "
@@ -61,14 +65,14 @@
           to="/dailyReports"
           class="flex items-center w-full"
           :class="[
-            route.name === 'dailyReports' || route.name === 'DailyReports-id'
+            route.name === 'DailyReports' || route.name === 'DailyReports-id'
               ? 'bg-stone-800 text-slate-100 rounded-lg'
               : '',
             minimized ? '' : 'pr-4',
           ]"
           ><img
             :src="
-              route.name === 'dailyReports' || route.name === 'DailyReports-id'
+              route.name === 'DailyReports' || route.name === 'DailyReports-id'
                 ? '/icons/dailyReports-selected.svg'
                 : '/icons/dailyReports.svg'
             "
@@ -79,7 +83,7 @@
           to="/dailyUpdates"
           class="flex items-center w-full"
           :class="[
-            route.name === 'dailyUpdates' ||
+            route.name === 'DailyUpdates' ||
             route.name === 'DailyUpdates-id' ||
             route.name === 'DailyUpdates-new'
               ? 'bg-stone-800 text-slate-100 rounded-lg'
@@ -88,7 +92,7 @@
           ]"
           ><img
             :src="
-              route.name === 'dailyUpdates' ||
+              route.name === 'DailyUpdates' ||
               route.name === 'DailyUpdates-id' ||
               route.name === 'DailyUpdates-new'
                 ? '/icons/dailyUpdates-selected.svg'
@@ -101,7 +105,7 @@
           to="/locations"
           class="flex items-center w-full"
           :class="[
-            route.name === 'locations' ||
+            route.name === 'Locations' ||
             route.name === 'Locations-id' ||
             route.name === 'Locations-Sites-id'
               ? 'bg-stone-800 text-slate-100 rounded-lg'
@@ -110,7 +114,7 @@
           ]"
           ><img
             :src="
-              route.name === 'locations' ||
+              route.name === 'Locations' ||
               route.name === 'Locations-id' ||
               route.name === 'Locations-Sites-id'
                 ? '/icons/Sites-selected.svg'

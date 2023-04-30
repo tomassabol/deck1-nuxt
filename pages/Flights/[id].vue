@@ -1,6 +1,15 @@
 <template>
   <div class="m-14 h-max">
-    <PageTitle primaryText="Flight" :secondaryText="flight?.flightNumber" />
+    <div class="flex justify-between">
+      <PageTitle primaryText="Flight" :secondaryText="flight?.flightNumber" />
+      <ButtonReusable
+        v-if="flight && flight.editable"
+        text="Edit"
+        :editBtn="true"
+        :displayIcon="false"
+        @click.prevent="router.push(`/flights/edit/${flight.id}`)"
+      />
+    </div>
     <div
       class="flex flex-col gap-12 w-full mt-6 bg-white rounded-md shadow-md p-5"
       v-if="flight"
@@ -188,11 +197,9 @@ import Select from "@/components/Select/Select.vue";
 import TextArea from "@/components/Input/TextArea.vue";
 import BackButton from "@/components/Buttons/BackButton.vue";
 import ToggleSwitch from "@/components/Input/ToggleSwitch.vue";
-import { useRoute } from "vue-router";
-import { Ref, onBeforeMount } from "vue";
-import { ref } from "@vue/reactivity";
 import { timeFormat } from "@/utils/dateFormat";
 import DateInput from "@/components/Input/DateInput.vue";
+import ButtonReusable from "@/components/Buttons/ButtonReusable.vue";
 
 const route = useRoute();
 const router = useRouter();

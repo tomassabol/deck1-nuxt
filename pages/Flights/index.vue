@@ -14,15 +14,23 @@
           class="border-2 border-gray-100 w-64 h-10 rounded-md text-lg text-center"
         />
         <div class="flex gap-2 mt-2 items-center">
-          <BackButton text="Reset" @click.prevent="resetFlights" />
+          <BackButton
+            text="Reset"
+            :displayIcon="false"
+            @click.prevent="resetFlights"
+          />
           <ButtonReusable
             text="Search"
             :loading="isLoading.flights"
+            :displayIcon="false"
             @click.prevent="getData"
           />
         </div>
       </PageTitle>
-      <ButtonReusable text="New Flight" />
+      <ButtonReusable
+        text="New Flight"
+        @click.prevent="router.push('flights/new')"
+      />
     </div>
     <Table :tableHeaders="tableHeaders" :tableData="flights">
       <TableRow
@@ -69,8 +77,9 @@ import { Ref, onBeforeMount, ref } from "vue";
 import TimeFormat from "@/components/Helpers/TimeFormat.vue";
 import { graphqlDateFormat } from "@/utils/dateFormat";
 import BackButton from "@/components/Buttons/BackButton.vue";
-
 import query from "~/api/flights.graphql";
+
+const router = useRouter();
 
 const flights: Ref<Types.Flight[]> = ref([]);
 
