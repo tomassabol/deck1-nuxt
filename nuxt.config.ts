@@ -40,4 +40,11 @@ export default defineNuxtConfig({
       ],
     },
   },
+
+  runtimeConfig: {
+    public: {
+      dsn: process.env.SENTRY_DSN,
+      env: process.env.SENTRY_ENV,
+    },
+  },
 });
