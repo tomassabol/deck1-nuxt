@@ -1,9 +1,10 @@
 <template>
-  <div class="m-14 w-full">
-    <div class="flex justify-between items-end">
-      <PageTitle :primaryText="'Location'" :secondaryText="location?.name" />
-    </div>
-    <div class="flex flex-col gap-12 w-full mt-6" v-if="location">
+  <div class="m-14 w-max">
+    <PageTitle :primaryText="'Location'" :secondaryText="location?.name" />
+    <div
+      class="flex flex-col gap-12 w-full mt-6 bg-white rounded-md shadow-md p-5 lg:px-16 lg:py-10 xl:px-20 xl:py-14"
+      v-if="location"
+    >
       <div>
         <Label>ID</Label>
         <Input v-model="location.id" :isDisabled="true" />
@@ -13,10 +14,16 @@
         <Input v-model="location.name" :isDisabled="true" />
       </div>
       <div>
-        <Label>Coordinates</Label>
-        <div class="flex gap-x-6">
-          <Input v-model="location.lat" :isDisabled="true" />
-          <Input v-model="location.lng" :isDisabled="true" />
+        <Label><span class="text-2xl">Coordinates</span></Label>
+        <div class="flex gap-x-6 flex-wrap gap-3">
+          <div>
+            <Label>Latitude</Label>
+            <Input v-model="location.lat" :isDisabled="true" />
+          </div>
+          <div>
+            <Label>Longitude</Label>
+            <Input v-model="location.lng" :isDisabled="true" />
+          </div>
         </div>
       </div>
       <div>
@@ -36,7 +43,10 @@
           </div>
         </div>
       </div>
-      <BackButton class="flex self-end" @click.prevent="router.go(-1)" />
+      <BackButton
+        class="flex self-end lg:mt-4 xl:mt-4 2xl:mt-4"
+        @click.prevent="router.go(-1)"
+      />
     </div>
   </div>
 </template>

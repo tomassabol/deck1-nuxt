@@ -30,7 +30,10 @@
           </TabButton>
         </div>
       </div>
-      <ButtonReusable text="New Location" />
+      <ButtonReusable
+        text="New Location"
+        @click.prevent="router.push('/locations/new')"
+      />
     </div>
     <div class="flex flex-col gap-12 w-full mt-4">
       <Table :tableHeaders="tableHeaders">

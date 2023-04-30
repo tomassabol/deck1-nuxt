@@ -139,22 +139,22 @@
         >
       </div>
       <div class="flex flex-col mb-8 items-center gap-4">
-        <NuxtLink to="/" v-if="!minimized">
+        <!-- <NuxtLink to="/" v-if="!minimized">
           <div
             class="flex gap-2 items-center text-2xl font-bold hover:text-stone-700 hover:bg-violet-200 hover:shadow-md p-1 px-3 rounded-md"
           >
             <Icon name="ion:arrow-left-c" />
             <span v-if="!minimized">Log Out</span>
           </div>
-        </NuxtLink>
+        </NuxtLink> -->
         <div
-          class="flex items-center gap-2 cursor-pointer font-medium text-lg"
+          class="flex items-center gap-2 cursor-pointer font-semibold text-xl"
           @click.prevent="minimized = !minimized"
         >
-          <Icon
-            name="icon-park-outline:hamburger-button"
-            :class="minimized ? 'opacity-100' : 'opacity-50 hover:opacity-100'"
-          /><span v-if="!minimized">Menu</span>
+          <Icon name="icon-park-outline:hamburger-button" /><span
+            v-if="!minimized"
+            >Menu</span
+          >
         </div>
       </div>
     </div>
