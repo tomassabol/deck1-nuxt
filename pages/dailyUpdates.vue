@@ -2,7 +2,10 @@
   <div class="flex flex-col m-14 gap-12 w-full">
     <div class="flex justify-between items-end">
       <PageTitle primaryText="Daily Updates" />
-      <ButtonReusable text="New Update" />
+      <ButtonReusable
+        text="New Update"
+        @click.prevent="router.push('dailyUpdates/new')"
+      />
     </div>
     <Table :tableHeaders="tableHeaders">
       <TableRow

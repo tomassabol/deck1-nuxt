@@ -1,8 +1,11 @@
 <template>
-  <div class="m-14 w-full">
+  <div class="m-14 w-full h-max">
     <PageTitle primaryText="Daily Update" :secondary-text="'ID: ' + id" />
-    <form class="flex flex-col gap-12 w-full mt-6" v-if="dailyUpdate">
-      <div class="flex gap-12 items-start">
+    <form
+      class="flex flex-col gap-12 w-max mt-6 bg-white rounded-md shadow-md p-5 lg:px-16 lg:py-10 xl:px-20 xl:py-14"
+      v-if="dailyUpdate"
+    >
+      <div class="flex flex-col gap-4 items-start">
         <div class="flex gap-4 items-center">
           <Label>Was flight?</Label>
           <ToggleSwitch v-model="dailyUpdate.wasFlight" :disabled="true" />
@@ -105,7 +108,6 @@ onBeforeMount(() => {
 async function getData() {
   const { data } = await useAsyncQuery(query, { id: id });
   if (data.value) {
-    console.log(data.value);
     // @ts-expect-error
     dailyUpdate.value = data.value.dailyUpdate;
   }

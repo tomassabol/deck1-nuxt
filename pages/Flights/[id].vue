@@ -1,7 +1,10 @@
 <template>
-  <div class="m-14">
+  <div class="m-14 h-max">
     <PageTitle primaryText="Flight" :secondaryText="flight?.flightNumber" />
-    <div class="flex flex-col gap-12 w-full mt-6" v-if="flight">
+    <div
+      class="flex flex-col gap-12 w-full mt-6 bg-white rounded-md shadow-md p-5"
+      v-if="flight"
+    >
       <!-- Flight number -->
       <div class="flex flex-wrap gap-x-10 gap-y-4">
         <div>
@@ -205,7 +208,6 @@ onBeforeMount(() => {
 async function getData() {
   const { data } = await useAsyncQuery(query, { id: id });
   if (data) {
-    // console.log(data.value.flightById);
     // @ts-expect-error
     flight.value = data.value.flightById as Types.Flight;
   }

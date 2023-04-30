@@ -60,7 +60,6 @@ const site: Ref<Types.Site | null> = ref(null);
 
 onBeforeMount(() => {
   getData();
-  console.log(route.name);
 });
 
 async function getData() {

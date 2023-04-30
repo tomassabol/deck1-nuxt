@@ -1,9 +1,9 @@
 <template>
-  <div class="m-14 w-full">
+  <div class="m-14 w-full h-max">
     <PageTitle primaryText="New Daily Update" />
     <form
-      class="flex flex-col gap-12 w-full mt-6"
-      @submit.prevent="createDailyUpdate"
+      class="flex flex-col gap-12 w-max mt-6 bg-white rounded-md shadow-md p-5"
+      @submit.prevent=""
     >
       <div class="flex gap-12 items-start">
         <div class="flex gap-4 items-center">
@@ -12,13 +12,20 @@
         </div>
         <div v-if="newDailyUpdate.wasFlight" class="flex flex-col gap-1">
           <Label>Flight</Label>
-          <VueMultiselect
-            v-model="selectedFlight"
-            :options="flights"
-            track-by="id"
-            label="flightNumber"
-            style="min-width: 16rem; max-width: 16rem"
-          />
+          <select
+            name=""
+            id=""
+            class="border-2 border-gray-200 w-64 h-10 rounded-md text-lg"
+          >
+            <option value="" selected disabled>Select a flight</option>
+            <option
+              v-for="option in flights"
+              :value="option.id"
+              class="text-center"
+            >
+              {{ option.flightNumber }}
+            </option>
+          </select>
         </div>
       </div>
       <div class="flex flex-col gap-3">
@@ -28,13 +35,20 @@
         </div>
         <div v-if="newDailyUpdate.delay" class="flex flex-col gap-2">
           <Label>Delay Code</Label>
-          <VueMultiselect
-            v-model="selectedDelayCode"
-            :options="delayCodes"
-            track-by="id"
-            label="code"
-            style="min-width: 16rem; max-width: 16rem"
-          />
+          <select
+            name=""
+            id=""
+            class="border-2 border-gray-200 w-64 h-10 rounded-md text-lg"
+          >
+            <option value="" selected disabled>Select a delay code</option>
+            <option
+              v-for="option in delayCodes"
+              :value="option.code"
+              class="text-center"
+            >
+              {{ option.description }}
+            </option>
+          </select>
         </div>
         <div v-if="newDailyUpdate.delay" class="flex flex-col gap-1">
           <Label>Delay Time (min)</Label>
@@ -79,8 +93,12 @@
         <TextArea v-model="newDailyUpdate.note" />
       </div>
       <div class="flex self-end gap-x-4">
-        <BackButton @click.prevent="goBack" />
-        <ButtonReusable type="submit" text="Create Flight" />
+        <BackButton @click.prevent="router.go(-1)" />
+        <ButtonReusable
+          type="submit"
+          text="Create Flight"
+          @click.prevent="mutate"
+        />
       </div>
     </form>
   </div>
@@ -88,14 +106,13 @@
 <script setup lang="ts">
 import Label from "@/components/Headers/Label.vue";
 import PageTitle from "@/components/Headers/PageTitle.vue";
-import VueMultiselect from "vue-multiselect";
-import "vue-multiselect/dist/vue-multiselect.css";
 import ToggleSwitch from "@/components/Input/ToggleSwitch.vue";
 import Input from "@/components/Input/Input.vue";
 import TextArea from "@/components/Input/TextArea.vue";
 import ButtonReusable from "@/components/Buttons/ButtonReusable.vue";
 import BackButton from "@/components/Buttons/BackButton.vue";
 import query from "~/api/flightMinDetails.graphql";
+import mutation from "~/api/createDailyUpdate.graphql";
 
 const router = useRouter();
 
@@ -126,30 +143,15 @@ watch(
   }
 );
 
-onBeforeMount(() => {
-  getFlights();
+onBeforeMount(async () => {
+  await getData();
 });
-function getFlights() {
-  FLightService.getFlightsMinimalData()
-    .then((response) => {
-      flights.value = response.data.data.flights as Types.Flight[];
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}
-function createDailyUpdate() {
-  DailyUpdateService.createDailyUpdate(newDailyUpdate.value)
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}
-
-function goBack() {
-  router.go(-1);
+async function getData() {
+  const { data } = await useAsyncQuery({ query });
+  if (data.value) {
+    // @ts-expect-error
+    flights.value = data.value.flights as Types.Flight[];
+  }
 }
 
 const delayCodes = [
@@ -164,4 +166,29 @@ const delayCodes = [
   { id: 9, code: "I", description: "I - Unknown" },
   { id: 10, code: "J", description: "J - Not Applicable" },
 ];
+
+const { mutate, onError, onDone } = useMutation(mutation, {
+  variables: {
+    flightId: newDailyUpdate.value.flightId,
+    wasFlight: newDailyUpdate.value.wasFlight,
+    delay: newDailyUpdate.value.delay,
+    delayCode: newDailyUpdate.value.delayCode,
+    delayTime: newDailyUpdate.value.delayTime,
+    delayDesc: newDailyUpdate.value.delayDesc,
+    maintenance: newDailyUpdate.value.maintenace,
+    unplannedMaintenance: newDailyUpdate.value.unplannedMaintenance,
+    plannedMaintenance: newDailyUpdate.value.plannedMaintenance,
+    otherMaintenance: newDailyUpdate.value.otherMaintenance,
+    maintenanceNote: newDailyUpdate.value.maintenanceNote,
+    baseAndEquipment: newDailyUpdate.value.baseAndEquipment,
+    note: newDailyUpdate.value.note,
+  },
+});
+onError((err) => {
+  console.log(err);
+});
+onDone((data) => {
+  console.log(data.data);
+  alert(data.data.createDailyUpdate);
+});
 </script>

@@ -13,13 +13,13 @@
           v-model="searchDate"
           class="border-2 border-gray-100 w-64 h-10 rounded-md text-lg text-center"
         />
-        <div class="flex gap-2 mt-2">
+        <div class="flex gap-2 mt-2 items-center">
+          <BackButton text="Reset" @click.prevent="resetFlights" />
           <ButtonReusable
             text="Search"
             :loading="isLoading.flights"
             @click.prevent="getData"
           />
-          <BackButton text="Reset" @click.prevent="resetFlights" />
         </div>
       </PageTitle>
       <ButtonReusable text="New Flight" />
