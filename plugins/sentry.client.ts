@@ -13,8 +13,11 @@ export default defineNuxtPlugin((nuxtApp) => {
       new BrowserTracing({
         routingInstrumentation: Sentry.vueRouterInstrumentation(router),
       }),
+      new Sentry.Replay(),
     ],
     tracesSampleRate: 1.0,
+    replaysSessionSampleRate: 0.5,
+    replaysOnErrorSampleRate: 1.0,
   });
 
   return {
